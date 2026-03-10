@@ -1,9 +1,11 @@
 {
 "name": "Raspa y Gana",
-"short_name": "Raspa",
+     "_comment1": "cambio de nombre",
+"short_name": "Gravity",
 "start_url": "index.html",
 "display": "standalone",
 "orientation": "landscape",
+     "_comment2": "cambio de color en back y theme",
 "background_color": "#FFD700",
 "theme_color": "#FFD700",
 
@@ -14,4 +16,5 @@
     "type": "image/png"
     }
   ]
+
 }
