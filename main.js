@@ -6,8 +6,8 @@ super("Inicio");
 }
 
 preload(){
-this.load.image("fondoInicio","../img/fondoInicio.jpg");
-this.load.image("boton","../img/boton.jpg");
+this.load.image("fondoInicio","fondoInicio.jpg");
+this.load.image("boton","boton.jpg");
 }
 
 create(){
@@ -38,13 +38,13 @@ super("Juego");
 }
 //cambio de nombre de los premios
 preload(){
-this.load.image("raspado","../img/raspado.jpg");
-this.load.image("brush","../img/brush.png");
+this.load.image("raspado","raspado.jpg");
+this.load.image("brush","brush.png");
 
-this.load.image("pez","../img/pez.png");
-this.load.image("estrella","../img/estrella.png");
-this.load.image("pino","../img/pino.png");
-this.load.image("mano","../img/mano.png");
+this.load.image("pez","pez.png");
+this.load.image("estrella","estrella.png");
+this.load.image("pino","pino.png");
+this.load.image("mano","mano.png");
 }
 
 create(){
@@ -247,5 +247,6 @@ parent:"game",
 scene:[Inicio,Juego]
 
 };
+
 
 const game = new Phaser.Game(config);
