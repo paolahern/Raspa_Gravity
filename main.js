@@ -11,18 +11,16 @@ this.load.image("boton","boton.jpg");
 }
 
 create(){
-
-let cartel = this.add.image(450,300,"fondoInicio");
-cartel.setDisplaySize(900,600);
+let fondo = this.add.image(450,300,"fondoInicio");
+fondo.setDisplaySize(900,600);
 
 let boton=this.add.image(450,450,"boton")
 .setScale(0.5)
 .setInteractive();
 
-this.add.text(250,400,"Bienvenido a la\ncabaña del misterio",{
+this.add.text(340,540,"COMENZAR",{
 fontSize:"48px",
-color:"#000000",//cambio de color 
-align:"center"
+color:"#000000"//cambio de color 
 });
 
 boton.on("pointerdown",()=>{
@@ -40,10 +38,9 @@ super("Juego");
 }
 //cambio de nombre de los premios
 preload(){
-
 this.load.image("raspado","raspado.jpg");
 this.load.image("brush","brush.png");
-//agrege un fondo de imagen
+//agregue fondo de juego
 this.load.image("fondojuego","fondojuego.jpg");
 
 this.load.image("pez","pez.png");
@@ -53,12 +50,12 @@ this.load.image("mano","mano.png");
 }
 
 create(){
- //fondo de imagen
+// fondo de juego agregado
 let fondojuego = this.add.image(0,0,"fondojuego");
 fondojuego.setOrigin(0,0);
 fondojuego.setDisplaySize(this.scale.width,this.scale.height);
 fondojuego.setDepth(-1);
-    
+
 this.premios= ["pez","estrella","pino","mano"];
 
 this.resultados=[];
@@ -114,8 +111,7 @@ posiciones[i],
 
 rt.draw("raspado",0,0);
 
-// SOLO CAMBIÉ ESTA LÍNEA (agregué "raspado")
-let tarjeta = this.add.image(posiciones[i], 350, "raspado");
+let tarjeta=this.add.image(posiciones[i],350,);
 
 this.tarjetas.push({
 rt:rt,
@@ -133,8 +129,8 @@ if(pointer.isDown){
 this.tarjetas.forEach(t=>{
 if(t.descubierta) return;
 
-let localX=pointer.x - (t.img.x - 100);
-let localY=pointer.y - (t.img.y - 100);
+let localX=pointer.x-(t.img.x-100);
+let localY=pointer.y-(t.img.y-100);
 
 if(localX>0 && localX<200 && localY>0 && localY<200){
 
@@ -204,8 +200,7 @@ this.resultados[0]===this.resultados[1] &&
 this.resultados[1]===this.resultados[2]
 ){
 
-    //cambio de mensaje 
-mensaje="Ganaste el oro";
+mensaje="Ganaste el oro ";
 
 }else{
 
@@ -226,7 +221,7 @@ this.botonReiniciar();
 
 // boton reiniciar
 botonReiniciar(){
-let boton=this.add.text(380,520,"Juega de nuevo",{
+let boton=this.add.text(380,520,"Prueba suerte",{
 fontSize:"32px",
 //Cambio de color 
 backgroundColor:"#0051ff",
@@ -259,6 +254,5 @@ parent:"game",
 scene:[Inicio,Juego]
 
 };
-
 
 const game = new Phaser.Game(config);
