@@ -8,11 +8,13 @@ super("Inicio");
 preload(){
 this.load.image("fondoInicio","fondoInicio.jpg");
 this.load.image("boton","boton.jpg");
-    this.load.image("fondo2","fondo2.jpg");
+//agrege un fondo de imagen
+this.load.image("fondo2","fondo2.jpg");
 }
 
 create(){
 
+    //fondo de imagen
 let width = this.sys.game.config.width;
 let height = this.sys.game.config.height;
 
@@ -27,7 +29,7 @@ let boton=this.add.image(450,450,"boton")
 .setScale(0.5)
 .setInteractive();
 
-this.add.text(340,540,"COMENZAR",{
+this.add.text(340,540,"Comenzar",{
 fontSize:"48px",
 color:"#000000"//cambio de color 
 });
@@ -202,11 +204,12 @@ this.resultados[0]===this.resultados[1] &&
 this.resultados[1]===this.resultados[2]
 ){
 
-mensaje="🎉 GANASTE 🎉";
+    //cambio de mensaje 
+mensaje="Ganaste el oro";
 
 }else{
 
-mensaje="😢 Intenta otra vez";
+mensaje="Intenta otra vez";
 
 }
 
@@ -259,4 +262,5 @@ scene:[Inicio,Juego]
 
 
 const game = new Phaser.Game(config);
+
 
