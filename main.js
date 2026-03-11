@@ -39,10 +39,11 @@ super("Juego");
 }
 //cambio de nombre de los premios
 preload(){
-this.load.image("raspado","raspado.jpg");
-this.load.image("brush","brush.png");
 //agrege un fondo de imagen
 this.load.image("fondojuego","fondojuego.jpg");
+this.load.image("raspado","raspado.jpg");
+this.load.image("brush","brush.png");
+
 
 this.load.image("pez","pez.png");
 this.load.image("estrella","estrella.png");
@@ -262,6 +263,7 @@ scene:[Inicio,Juego]
 
 
 const game = new Phaser.Game(config);
+
 
 
 
