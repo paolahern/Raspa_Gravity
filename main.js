@@ -19,7 +19,7 @@ let boton=this.add.image(450,450,"boton")
 .setScale(0.5)
 .setInteractive();
 
-this.add.text(340,540,"Bienvenido a la\ncabaña del misterio",{
+this.add.text(340,540,"Bienvenidx",{
 fontSize:"48px",
 color:"#000000"//cambio de color 
 align: "center"  // Para centrar el texto en múltiples líneas
@@ -263,5 +263,6 @@ scene:[Inicio,Juego]
 
 
 const game = new Phaser.Game(config);
+
 
 
