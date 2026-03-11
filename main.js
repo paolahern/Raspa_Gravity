@@ -121,7 +121,6 @@ img:tarjeta,
 porcentaje:0,
 descubierta:false
 });
-;
 
 }
 
@@ -261,6 +260,7 @@ scene:[Inicio,Juego]
 
 
 const game = new Phaser.Game(config);
+
 
 
 
