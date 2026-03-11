@@ -19,9 +19,10 @@ let boton=this.add.image(450,450,"boton")
 .setScale(0.5)
 .setInteractive();
 
-this.add.text(340,540,"Comenzar",{
+this.add.text(250,400,"Bienvenido a la\ncabaña del misterio",{
 fontSize:"48px",
-color:"#000000"//cambio de color 
+color:"#000000",//cambio de color 
+align:"center"
 });
 
 boton.on("pointerdown",()=>{
@@ -105,20 +106,20 @@ let premio = this.resultados[i];
 this.add.image(posiciones[i],350,premio).setScale(0.5);
 
 let rt = this.add.renderTexture(
-posiciones[i] - 100, // MODIFICADO: ajuste para centrar
-350, // MODIFICADO: ajuste para centrar
+posiciones[i],
+350,
 200,
 200
 );
 
 rt.draw("raspado",0,0);
 
-// MODIFICADO: eliminé la línea de tarjeta que no funcionaba
+// SOLO CAMBIÉ ESTA LÍNEA (agregué "raspado")
+let tarjeta = this.add.image(posiciones[i], 350, "raspado");
 
 this.tarjetas.push({
 rt:rt,
-x: posiciones[i], // NUEVO: guardamos la posición x
-y: 350, // NUEVO: guardamos la posición y
+img:tarjeta,
 porcentaje:0,
 descubierta:false
 });
@@ -132,9 +133,8 @@ if(pointer.isDown){
 this.tarjetas.forEach(t=>{
 if(t.descubierta) return;
 
-// MODIFICADO: ajuste de coordenadas usando t.x y t.y
-let localX=pointer.x - (t.x - 100);
-let localY=pointer.y - (t.y - 100);
+let localX=pointer.x - (t.img.x - 100);
+let localY=pointer.y - (t.img.y - 100);
 
 if(localX>0 && localX<200 && localY>0 && localY<200){
 
