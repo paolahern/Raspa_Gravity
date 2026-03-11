@@ -19,7 +19,7 @@ let boton=this.add.image(450,450,"boton")
 .setScale(0.5)
 .setInteractive();
 
-this.add.text(340,540,"Bienvenidx",{
+this.add.text(340,540,"Comenzar",{
 fontSize:"48px",
 color:"#000000"//cambio de color 
 });
@@ -106,19 +106,18 @@ this.add.image(posiciones[i],350,premio).setScale(0.5);
 
 let rt = this.add.renderTexture(
 posiciones[i] - 100, // ajuste para centrar
-250, // ajuste para centrar
+250, //  ajuste para centrar
 200,
 200
 );
 
 rt.draw("raspado",0,0);
 
-// eliminé la línea de tarjeta que no funcionaba
 
 this.tarjetas.push({
 rt:rt,
-x: posiciones[i], // guardamos la posición x
-y: 350, // guardamos la posición y
+x: posiciones[i], //guardamos la posición x
+y: 350, //guardamos la posición y
 porcentaje:0,
 descubierta:false
 });
@@ -132,7 +131,7 @@ if(pointer.isDown){
 this.tarjetas.forEach(t=>{
 if(t.descubierta) return;
 
-//ajuste de coordenadas usando t.x y t.y
+// ajuste de coordenadas usando t.x y t.y
 let localX=pointer.x - (t.x - 100);
 let localY=pointer.y - (t.y - 100);
 
