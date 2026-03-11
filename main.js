@@ -6,8 +6,8 @@ super("Inicio");
 }
 
 preload(){
-this.load.image("fondoInicio","../img/fondoInicio.jpg");
-this.load.image("boton","../img/boton.jpg");
+this.load.image("fondoInicio","fondoInicio.jpg");
+this.load.image("boton","boton.jpg");
 }
 
 create(){
@@ -281,3 +281,4 @@ scene:[Inicio,Juego]
 };
 
 const game = new Phaser.Game(config);
+
