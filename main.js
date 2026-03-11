@@ -8,9 +8,18 @@ super("Inicio");
 preload(){
 this.load.image("fondoInicio","fondoInicio.jpg");
 this.load.image("boton","boton.jpg");
+    this.load.image("fondo2","fondo2.jpg");
 }
 
 create(){
+
+let width = this.sys.game.config.width;
+let height = this.sys.game.config.height;
+
+let fondo = this.add.image(0,0,"fondo2");
+fondo.setOrigin(0,0);
+fondo.setDisplaySize(width,height);
+    
 let fondo = this.add.image(450,300,"fondoInicio");
 fondo.setDisplaySize(900,600);
 
@@ -250,3 +259,4 @@ scene:[Inicio,Juego]
 
 
 const game = new Phaser.Game(config);
+
