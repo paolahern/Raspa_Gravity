@@ -122,14 +122,14 @@ this.add.image(posiciones[i],350,premio)
 
 // capa que se raspa
 let rt = this.add.renderTexture(
-posiciones[i]-100,
-350-100,
+posiciones[i],
+350,
 200,
 200
 );
 
-// dibujar la capa gris
-rt.draw("raspado",0,0);
+rt.setOrigin(0.5);
+rt.draw("raspado",-100,-100);
 
 this.tarjetas.push({
 
@@ -150,8 +150,8 @@ this.tarjetas.forEach(t=>{
 
 if(t.descubierta) return;
 
-let localX = pointer.x - t.rt.x;
-let localY = pointer.y - t.rt.y;
+let localX = pointer.x - (t.rt.x - 100);
+let localY = pointer.y - (t.rt.y - 100);
 
 if(localX>0 && localX<200 && localY>0 && localY<200){
 
@@ -283,3 +283,4 @@ scene:[Inicio,Juego]
 };
 
 const game = new Phaser.Game(config);
+
