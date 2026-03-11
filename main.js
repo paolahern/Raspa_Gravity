@@ -22,7 +22,6 @@ let boton=this.add.image(450,450,"boton")
 this.add.text(340,540,"Bienvenidx",{
 fontSize:"48px",
 color:"#000000"//cambio de color 
-
 });
 
 boton.on("pointerdown",()=>{
@@ -106,7 +105,7 @@ let premio = this.resultados[i];
 this.add.image(posiciones[i],350,premio).setScale(0.5);
 
 let rt = this.add.renderTexture(
-posiciones[i] - 100, //ajuste para centrar
+posiciones[i] - 100, // ajuste para centrar
 250, // ajuste para centrar
 200,
 200
@@ -133,7 +132,7 @@ if(pointer.isDown){
 this.tarjetas.forEach(t=>{
 if(t.descubierta) return;
 
-// ajuste de coordenadas usando t.x y t.y
+//ajuste de coordenadas usando t.x y t.y
 let localX=pointer.x - (t.x - 100);
 let localY=pointer.y - (t.y - 100);
 
@@ -146,7 +145,7 @@ t.porcentaje = Math.min(t.porcentaje + 1, 100);
 
 this.actualizarCirculo(t.porcentaje);
 
-if(t.porcentaje>100){
+if(t.porcentaje>99){
 
 t.descubierta=true;
 
@@ -263,7 +262,3 @@ scene:[Inicio,Juego]
 
 
 const game = new Phaser.Game(config);
-
-
-
-
