@@ -115,14 +115,14 @@ this.add.image(posiciones[i],350,premio).setScale(0.5);
 
 // Crear render texture para la capa raspable
 let rt = this.add.renderTexture(
-posiciones[i] - 100,
-350 - 100,
+posiciones[i],
+350,
 200,
 200
 );
 
 // dibujar la capa que se va a raspar
-rt.draw("raspado",100,100);
+rt.setOrigin(0.5); // centra el render texture
 rt.setOrigin(0);
 
 // Crear imagen fantasma para detección de área (no visible realmente)
@@ -148,9 +148,8 @@ this.tarjetas.forEach(t=>{
 
 if(t.descubierta) return;
 
-//usar t.rt.x y t.rt.y en lugar de t.img
-let localX=pointer.x - t.rt.x;
-let localY=pointer.y - t.rt.y;
+let localX = pointer.x - (t.rt.x - 100);
+let localY = pointer.y - (t.rt.y - 100);
 
 if(localX>0 && localX<200 && localY>0 && localY<200){
 
@@ -288,3 +287,4 @@ scene:[Inicio,Juego]
 };
 
 const game = new Phaser.Game(config);
+
