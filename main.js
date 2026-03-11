@@ -27,7 +27,7 @@ boton.on("pointerdown",()=>{
 
 this.scene.start("Juego");
 });
-    }
+}
 }
 
 // ------------------- ESCENA JUEGO -------------------
@@ -36,10 +36,12 @@ class Juego extends Phaser.Scene {
 constructor(){
 super("Juego");
 }
+
 //cambio de nombre de los premios
 preload(){
 this.load.image("raspado","raspado.jpg");
 this.load.image("brush","brush.png");
+
 //agregue fondo de juego
 this.load.image("fondojuego","fondojuego.jpg");
 
@@ -50,6 +52,7 @@ this.load.image("mano","mano.png");
 }
 
 create(){
+
 // fondo de juego agregado
 let fondojuego = this.add.image(0,0,"fondojuego");
 fondojuego.setOrigin(0,0);
@@ -75,6 +78,7 @@ this.raspador.y = pointer.y;
 
 // contador circular
 this.grafica=this.add.graphics();
+
 //cambie la aliniacion
 this.textoPorcentaje=this.add.text(420,70,"0%",{
 fontSize:"28px",
@@ -84,19 +88,26 @@ color:"#ffffff"
 let posiciones = [200,450,700];
 
 if(Math.random() < 0.3){ 
-    // 30% de probabilidad de ganar
-    let premio = Phaser.Utils.Array.GetRandom(this.premios);
-    this.resultados = [premio, premio, premio];
-    }else{
-    // pierde
-    this.resultados = [
-        Phaser.Utils.Array.GetRandom(this.premios),
-        Phaser.Utils.Array.GetRandom(this.premios),
-        Phaser.Utils.Array.GetRandom(this.premios)
-    ];
+
+// 30% de probabilidad de ganar
+let premio = Phaser.Utils.Array.GetRandom(this.premios);
+
+this.resultados = [premio, premio, premio];
+
+}else{
+
+// pierde
+this.resultados = [
+
+Phaser.Utils.Array.GetRandom(this.premios),
+Phaser.Utils.Array.GetRandom(this.premios),
+Phaser.Utils.Array.GetRandom(this.premios)
+
+];
 }
 
 for(let i=0; i<3; i++){
+
 let premio = this.resultados[i];
 
 // Mostrar el premio (visible debajo de la capa para raspar)
@@ -104,30 +115,37 @@ this.add.image(posiciones[i],350,premio).setScale(0.5);
 
 // Crear render texture para la capa raspable
 let rt = this.add.renderTexture(
-posiciones[i] - 100, // ajuste de posición X
-350 - 100,            // ajuste de posición Y
+posiciones[i] - 100,
+350 - 100,
 200,
 200
 );
 
-rt.draw("raspado",0,0);
+// dibujar la capa que se va a raspar
+rt.draw("raspado",100,100);
+rt.setOrigin(0);
 
 // Crear imagen fantasma para detección de área (no visible realmente)
 let tarjeta=this.add.image(posiciones[i],350,"raspado").setAlpha(0); //alpha 0 para que no se vea
 
 this.tarjetas.push({
+
 rt:rt,
 img:tarjeta,
 porcentaje:0,
 descubierta:false
+
 });
 
 }
 
 // raspar
 this.input.on("pointermove",(pointer)=>{
+
 if(pointer.isDown){
+
 this.tarjetas.forEach(t=>{
+
 if(t.descubierta) return;
 
 //usar t.rt.x y t.rt.y en lugar de t.img
@@ -136,18 +154,16 @@ let localY=pointer.y - t.rt.y;
 
 if(localX>0 && localX<200 && localY>0 && localY<200){
 
-t.rt.erase("brush",localX,localY,1);
+t.rt.erase("brush",localX,localY,0.5);
 
 //aumento de porcentaje
-t.porcentaje = Math.min(t.porcentaje + 0.5, 100); //incremento más suave
+t.porcentaje = Math.min(t.porcentaje + 0.2, 100);
 
 this.actualizarCirculo(t.porcentaje);
 
-if(t.porcentaje>=99.5){ //umbral para considerar completo
+if(t.porcentaje>=100){
 
 t.descubierta=true;
-
-t.rt.erase("brush",100,100,10);
 
 t.rt.clear();
 
@@ -165,9 +181,12 @@ this.verificarPremio();
 
 // también manejar pointerdown para raspado inmediato
 this.input.on("pointerdown", (pointer) => {
+
 // Simular un movimiento para raspar al hacer clic
 this.input.emit("pointermove", pointer);
+
 });
+
 }
 
 // contador circular
@@ -200,11 +219,13 @@ verificarPremio(){
 let mensaje="";
 
 if(
+
 this.resultados[0]===this.resultados[1] &&
 this.resultados[1]===this.resultados[2]
+
 ){
 
-mensaje="Ganaste el oro ";
+mensaje="Ganaste el oro ";// cambio de mensaje
 
 }else{
 
@@ -223,17 +244,28 @@ this.botonReiniciar();
 
 // boton reiniciar
 botonReiniciar(){
+
 let boton=this.add.text(380,520,"Prueba suerte",{
+
 fontSize:"32px",
+
 //Cambio de color 
 backgroundColor:"#0051ff",
+
 padding:10
+
 })
+
 .setInteractive();
+
 boton.on("pointerdown",()=>{
+
 this.scene.restart();
+
 });
+
 }
+
 }
 
 // ------------------- CONFIGURACION -------------------
