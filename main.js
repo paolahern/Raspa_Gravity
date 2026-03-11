@@ -113,11 +113,17 @@ posiciones[i],
 
 rt.draw("raspado",0,0);
 
-let tarjeta=this.add.image(posiciones[i],350);
+let rt = this.add.renderTexture(
+posiciones[i],
+350,
+200,
+200
+);
+
+rt.draw("raspado",0,0);
 
 this.tarjetas.push({
 rt:rt,
-img:tarjeta,
 porcentaje:0,
 descubierta:false
 });
@@ -131,8 +137,8 @@ if(pointer.isDown){
 this.tarjetas.forEach(t=>{
 if(t.descubierta) return;
 
-let localX=pointer.x-(t.img.x-100);
-let localY=pointer.y-(t.img.y-100);
+let localX=pointer.x - (t.img.x - 100);
+let localY=pointer.y - (t.img.y - 100);
 
 if(localX>0 && localX<200 && localY>0 && localY<200){
 
@@ -260,6 +266,7 @@ scene:[Inicio,Juego]
 
 
 const game = new Phaser.Game(config);
+
 
 
 
