@@ -58,8 +58,8 @@ let height = this.sys.game.config.height;
 
 // fondo juego
 let fondojuego = this.add.image(0,0,"fondojuego");
-fondo2.setOrigin(0,0);
-fondo2.setDisplaySize(width,height);
+fondojuego.setOrigin(0,0);
+fondojuego.setDisplaySize(width,height);
     
 this.premios= ["pez","estrella","pino","mano"];
 
@@ -263,6 +263,7 @@ scene:[Inicio,Juego]
 
 
 const game = new Phaser.Game(config);
+
 
 
 
