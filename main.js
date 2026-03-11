@@ -147,8 +147,8 @@ this.tarjetas.forEach(t=>{
 
 if(t.descubierta) return;
 
-let localX = pointer.x - (t.rt.x - 100);
-let localY = pointer.y - (t.rt.y - 100);
+let localX = pointer.x - t.rt.x;
+let localY = pointer.y - t.rt.y;
 
 if(localX>0 && localX<200 && localY>0 && localY<200){
 
@@ -286,6 +286,7 @@ scene:[Inicio,Juego]
 };
 
 const game = new Phaser.Game(config);
+
 
 
 
