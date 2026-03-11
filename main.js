@@ -113,20 +113,15 @@ posiciones[i],
 
 rt.draw("raspado",0,0);
 
-let rt = this.add.renderTexture(
-posiciones[i],
-350,
-200,
-200
-);
-
-rt.draw("raspado",0,0);
+let tarjeta=this.add.image(posiciones[i],350,);
 
 this.tarjetas.push({
 rt:rt,
+img:tarjeta,
 porcentaje:0,
 descubierta:false
 });
+;
 
 }
 
