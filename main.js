@@ -18,7 +18,7 @@ let boton=this.add.image(450,450,"boton")
 .setScale(0.5)
 .setInteractive();
 
-this.add.text(340,540,"COMENZAR",{
+this.add.text(340,540,"Bienvenidx",{
 fontSize:"48px",
 color:"#000000"//cambio de color 
 });
@@ -111,7 +111,7 @@ posiciones[i],
 
 rt.draw("raspado",0,0);
 
-let tarjeta=this.add.image(posiciones[i],350,);
+let tarjeta=this.add.image(posiciones[i],350,"raspado");
 
 this.tarjetas.push({
 rt:rt,
@@ -256,3 +256,4 @@ scene:[Inicio,Juego]
 };
 
 const game = new Phaser.Game(config);
+
