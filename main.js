@@ -113,7 +113,7 @@ posiciones[i],
 
 rt.draw("raspado",0,0);
 
-let tarjeta=this.add.image(posiciones[i],350,"raspado");
+let tarjeta=this.add.image(posiciones[i],350);
 
 this.tarjetas.push({
 rt:rt,
@@ -260,6 +260,7 @@ scene:[Inicio,Juego]
 
 
 const game = new Phaser.Game(config);
+
 
 
 
