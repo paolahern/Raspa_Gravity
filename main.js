@@ -121,6 +121,7 @@ posiciones[i],
 200
 );
 
+rt.draw("raspado",0,0);
 rt.setOrigin(0);
 
 // Crear imagen fantasma para detección de área (no visible realmente)
@@ -285,5 +286,6 @@ scene:[Inicio,Juego]
 };
 
 const game = new Phaser.Game(config);
+
 
 
