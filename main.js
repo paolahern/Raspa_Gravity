@@ -99,19 +99,21 @@ if(Math.random() < 0.3){
 for(let i=0; i<3; i++){
 let premio = this.resultados[i];
 
-
+// Mostrar el premio (visible debajo de la capa para raspar)
 this.add.image(posiciones[i],350,premio).setScale(0.5);
 
+// Crear render texture para la capa raspable
 let rt = this.add.renderTexture(
-posiciones[i],
-350,
+posiciones[i] - 100, // ajuste de posición X
+350 - 100,            // ajuste de posición Y
 200,
 200
 );
 
 rt.draw("raspado",0,0);
 
-let tarjeta=this.add.image(posiciones[i],350,"raspado");
+// Crear imagen fantasma para detección de área (no visible realmente)
+let tarjeta=this.add.image(posiciones[i],350,"raspado").setAlpha(0); //alpha 0 para que no se vea
 
 this.tarjetas.push({
 rt:rt,
@@ -122,26 +124,26 @@ descubierta:false
 
 }
 
-
 // raspar
 this.input.on("pointermove",(pointer)=>{
 if(pointer.isDown){
 this.tarjetas.forEach(t=>{
 if(t.descubierta) return;
 
-let localX=pointer.x-(t.img.x-100);
-let localY=pointer.y-(t.img.y-100);
+//usar t.rt.x y t.rt.y en lugar de t.img
+let localX=pointer.x - t.rt.x;
+let localY=pointer.y - t.rt.y;
 
 if(localX>0 && localX<200 && localY>0 && localY<200){
 
 t.rt.erase("brush",localX,localY,1);
 
 //aumento de porcentaje
-t.porcentaje = Math.min(t.porcentaje + 1, 100);
+t.porcentaje = Math.min(t.porcentaje + 0.5, 100); //incremento más suave
 
 this.actualizarCirculo(t.porcentaje);
 
-if(t.porcentaje>99){
+if(t.porcentaje>=99.5){ //umbral para considerar completo
 
 t.descubierta=true;
 
@@ -160,9 +162,13 @@ this.verificarPremio();
 });
 }
 });
+
+// también manejar pointerdown para raspado inmediato
+this.input.on("pointerdown", (pointer) => {
+// Simular un movimiento para raspar al hacer clic
+this.input.emit("pointermove", pointer);
+});
 }
-
-
 
 // contador circular
 actualizarCirculo(p){
@@ -187,8 +193,6 @@ this.grafica.strokePath();
 this.textoPorcentaje.setText(Math.floor(p)+"%");
 
 }
-
-
 
 // verificar premios
 verificarPremio(){
@@ -217,8 +221,6 @@ this.botonReiniciar();
 
 }
 
-
-
 // boton reiniciar
 botonReiniciar(){
 let boton=this.add.text(380,520,"Prueba suerte",{
@@ -233,8 +235,6 @@ this.scene.restart();
 });
 }
 }
-
-
 
 // ------------------- CONFIGURACION -------------------
 const config={
@@ -256,4 +256,3 @@ scene:[Inicio,Juego]
 };
 
 const game = new Phaser.Game(config);
-
