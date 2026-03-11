@@ -22,7 +22,7 @@ let boton=this.add.image(450,450,"boton")
 this.add.text(340,540,"Bienvenidx",{
 fontSize:"48px",
 color:"#000000"//cambio de color 
-align: "center"  // Para centrar el texto en múltiples líneas
+
 });
 
 boton.on("pointerdown",()=>{
@@ -263,6 +263,7 @@ scene:[Inicio,Juego]
 
 
 const game = new Phaser.Game(config);
+
 
 
 
