@@ -19,7 +19,6 @@ let boton=this.add.image(450,450,"boton")
 .setScale(0.5)
 .setInteractive();
 
-// SOLO CAMBIÉ ESTE TEXTO (líneas 22-25)
 this.add.text(250,400,"Bienvenido a la\ncabaña del misterio",{
 fontSize:"48px",
 color:"#000000",//cambio de color 
@@ -107,19 +106,18 @@ let premio = this.resultados[i];
 this.add.image(posiciones[i],350,premio).setScale(0.5);
 
 let rt = this.add.renderTexture(
-posiciones[i],
-350,
+posiciones[i] - 100,
+250,
 200,
 200
 );
 
 rt.draw("raspado",0,0);
 
-let tarjeta=this.add.image(posiciones[i],350,);
-
 this.tarjetas.push({
 rt:rt,
-img:tarjeta,
+x: posiciones[i],
+y: 350,
 porcentaje:0,
 descubierta:false
 });
@@ -133,8 +131,8 @@ if(pointer.isDown){
 this.tarjetas.forEach(t=>{
 if(t.descubierta) return;
 
-let localX=pointer.x - (t.img.x - 100);
-let localY=pointer.y - (t.img.y - 100);
+let localX=pointer.x - (t.x - 100);
+let localY=pointer.y - (t.y - 100);
 
 if(localX>0 && localX<200 && localY>0 && localY<200){
 
