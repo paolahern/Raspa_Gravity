@@ -121,8 +121,6 @@ posiciones[i],
 200
 );
 
-// dibujar la capa que se va a raspar
-rt.setOrigin(0.5); // centra el render texture
 rt.setOrigin(0);
 
 // Crear imagen fantasma para detección de área (no visible realmente)
@@ -287,4 +285,5 @@ scene:[Inicio,Juego]
 };
 
 const game = new Phaser.Game(config);
+
 
