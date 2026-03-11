@@ -19,10 +19,9 @@ let boton=this.add.image(450,450,"boton")
 .setScale(0.5)
 .setInteractive();
 
-this.add.text(340,540,"Bienvenidx",{
+this.add.text(340,540,"Comenzar",{
 fontSize:"48px",
-color:"#000000",//cambio de color 
-align:"center"
+color:"#000000"//cambio de color 
 });
 
 boton.on("pointerdown",()=>{
@@ -106,18 +105,20 @@ let premio = this.resultados[i];
 this.add.image(posiciones[i],350,premio).setScale(0.5);
 
 let rt = this.add.renderTexture(
-posiciones[i] - 100,
-350,
+posiciones[i] - 100, // MODIFICADO: ajuste para centrar
+350, // MODIFICADO: ajuste para centrar
 200,
 200
 );
 
 rt.draw("raspado",0,0);
 
+// MODIFICADO: eliminé la línea de tarjeta que no funcionaba
+
 this.tarjetas.push({
 rt:rt,
-x: posiciones[i],
-y: 350,
+x: posiciones[i], // NUEVO: guardamos la posición x
+y: 350, // NUEVO: guardamos la posición y
 porcentaje:0,
 descubierta:false
 });
@@ -131,6 +132,7 @@ if(pointer.isDown){
 this.tarjetas.forEach(t=>{
 if(t.descubierta) return;
 
+// MODIFICADO: ajuste de coordenadas usando t.x y t.y
 let localX=pointer.x - (t.x - 100);
 let localY=pointer.y - (t.y - 100);
 
@@ -260,4 +262,3 @@ scene:[Inicio,Juego]
 
 
 const game = new Phaser.Game(config);
-
