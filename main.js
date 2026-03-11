@@ -8,21 +8,9 @@ super("Inicio");
 preload(){
 this.load.image("fondoInicio","fondoInicio.jpg");
 this.load.image("boton","boton.jpg");
-//agrege un fondo de imagen
-this.load.image("fondo2","fondo2.jpg");
 }
 
 create(){
-
-    //fondo de imagen
-let width = this.sys.game.config.width;
-let height = this.sys.game.config.height;
-
-// fondo grande
-let fondo2 = this.add.image(0,0,"fondo2");
-fondo2.setOrigin(0,0);
-fondo2.setDisplaySize(width,height);
-
 
 let cartel = this.add.image(450,300,"fondoInicio");
 cartel.setDisplaySize(900,600);
@@ -53,6 +41,8 @@ super("Juego");
 preload(){
 this.load.image("raspado","raspado.jpg");
 this.load.image("brush","brush.png");
+//agrege un fondo de imagen
+this.load.image("fondojuego","fondojuego.jpg");
 
 this.load.image("pez","pez.png");
 this.load.image("estrella","estrella.png");
@@ -61,7 +51,15 @@ this.load.image("mano","mano.png");
 }
 
 create(){
+ //fondo de imagen
+let width = this.sys.game.config.width;
+let height = this.sys.game.config.height;
 
+// fondo juego
+let fondojuego = this.add.image(0,0,"fondojuego");
+fondo2.setOrigin(0,0);
+fondo2.setDisplaySize(width,height);
+    
 this.premios= ["pez","estrella","pino","mano"];
 
 this.resultados=[];
@@ -264,6 +262,7 @@ scene:[Inicio,Juego]
 
 
 const game = new Phaser.Game(config);
+
 
 
 
