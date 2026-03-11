@@ -53,13 +53,10 @@ this.load.image("mano","mano.png");
 
 create(){
  //fondo de imagen
-let width = this.sys.game.config.width;
-let height = this.sys.game.config.height;
-
-// fondo juego
 let fondojuego = this.add.image(0,0,"fondojuego");
 fondojuego.setOrigin(0,0);
-fondojuego.setDisplaySize(width,height);
+fondojuego.setDisplaySize(this.scale.width,this.scale.height);
+fondojuego.setDepth(-1);
     
 this.premios= ["pez","estrella","pino","mano"];
 
@@ -263,6 +260,7 @@ scene:[Inicio,Juego]
 
 
 const game = new Phaser.Game(config);
+
 
 
 
