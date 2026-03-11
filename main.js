@@ -105,19 +105,20 @@ let premio = this.resultados[i];
 this.add.image(posiciones[i],350,premio).setScale(0.5);
 
 let rt = this.add.renderTexture(
-posiciones[i],
-350,
+posiciones[i] - 100, //ajuste para centrar
+250, // ajuste para centrar
 200,
 200
 );
 
 rt.draw("raspado",0,0);
 
-let tarjeta=this.add.image(posiciones[i],350,);
+// eliminé la línea de tarjeta que no funcionaba
 
 this.tarjetas.push({
 rt:rt,
-img:tarjeta,
+x: posiciones[i], // guardamos la posición x
+y: 350, // guardamos la posición y
 porcentaje:0,
 descubierta:false
 });
@@ -131,8 +132,9 @@ if(pointer.isDown){
 this.tarjetas.forEach(t=>{
 if(t.descubierta) return;
 
-let localX=pointer.x - (t.img.x - 100);
-let localY=pointer.y - (t.img.y - 100);
+// ajuste de coordenadas usando t.x y t.y
+let localX=pointer.x - (t.x - 100);
+let localY=pointer.y - (t.y - 100);
 
 if(localX>0 && localX<200 && localY>0 && localY<200){
 
@@ -143,7 +145,7 @@ t.porcentaje = Math.min(t.porcentaje + 1, 100);
 
 this.actualizarCirculo(t.porcentaje);
 
-if(t.porcentaje>99){
+if(t.porcentaje>100){
 
 t.descubierta=true;
 
@@ -260,15 +262,3 @@ scene:[Inicio,Juego]
 
 
 const game = new Phaser.Game(config);
-
-
-
-
-
-
-
-
-
-
-
-
