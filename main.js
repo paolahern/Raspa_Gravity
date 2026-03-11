@@ -18,12 +18,14 @@ create(){
 let width = this.sys.game.config.width;
 let height = this.sys.game.config.height;
 
-let fondo = this.add.image(0,0,"fondo2");
-fondo.setOrigin(0,0);
-fondo.setDisplaySize(width,height);
-    
-let fondo = this.add.image(450,300,"fondoInicio");
-fondo.setDisplaySize(900,600);
+// fondo grande
+let fondo2 = this.add.image(0,0,"fondo2");
+fondo2.setOrigin(0,0);
+fondo2.setDisplaySize(width,height);
+
+
+let cartel = this.add.image(450,300,"fondoInicio");
+cartel.setDisplaySize(900,600);
 
 let boton=this.add.image(450,450,"boton")
 .setScale(0.5)
@@ -262,5 +264,6 @@ scene:[Inicio,Juego]
 
 
 const game = new Phaser.Game(config);
+
 
 
